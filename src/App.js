@@ -4,13 +4,14 @@ import { Routes, Route } from 'react-router-dom'
 import Coins from './components/Coins'
 import Coin from './routes/Coin'
 import Navbar from './components/Navbar'
+import API_KEY from './config'
 
 
 function App() {
 
   const [coins, setCoins] = useState([])
 
-  const url = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1&sparkline=false'
+  const url = API_KEY
 
   useEffect(() => {
     axios.get(url).then((response) => {
@@ -19,7 +20,7 @@ function App() {
     }).catch((error) => {
       console.log(error)
     })
-  }, [])
+  }, [url]);
 
   return (
     <>
